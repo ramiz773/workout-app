@@ -2,12 +2,16 @@ const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
-const app = express();
+const userRoutes = require("./routes/user");
 const workoutRoutes = require("./routes/workouts");
 
+// express init
+const app = express();
+
+// middleware
 app.use(express.json());
 
-// routes
+app.use("/api/user", userRoutes);
 app.use("/api/workouts", workoutRoutes);
 
 // connect db
