@@ -5,7 +5,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 const WorkoutDetails = ({ workout }) => {
    const { dispatch } = useWorkoutContext();
-   const handleClick = async () => {
+   const handleDelete = async () => {
       const res = await fetch("/api/workouts/" + workout._id, {
          method: "DELETE",
       });
@@ -13,7 +13,7 @@ const WorkoutDetails = ({ workout }) => {
       console.log(json);
       if (res.ok) {
          console.log("inside res.ok", json);
-         dispatch({ type: "DELETE_WORKOUT", payload: json.deletedWorkout });
+         dispatch({ type: "DELETE_WORKOUT", payload: json });
       }
    };
    return (
@@ -29,7 +29,7 @@ const WorkoutDetails = ({ workout }) => {
             <strong>Load: </strong> {workout.title}
          </p>
          <p>{moment(workout.createdAt).fromNow()}</p>
-         <span onClick={handleClick}>
+         <span onClick={handleDelete}>
             <RiDeleteBin6Line size={20} />
          </span>
       </div>

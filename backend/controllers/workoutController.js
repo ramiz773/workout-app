@@ -51,9 +51,7 @@ const deleteWorkout = async (req, res) => {
       if (!deleteWorkout) {
          return res.status(400).json({ mess: "No such Workout" });
       }
-      res.status(200).json({
-         mess: `workout deleted successfull ${deletedWorkout}`,
-      });
+      res.status(200).json(deletedWorkout);
    } catch (error) {
       res.status(500).json({ error: error.message });
    }
