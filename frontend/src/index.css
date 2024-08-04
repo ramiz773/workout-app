@@ -28,15 +28,48 @@ header .container {
    margin: 0 auto;
    padding: 10px 20px;
    display: flex;
-   align-items: center;
    justify-content: space-between;
+   align-items: center;
 }
 
 header a {
-   font-size: 1.5rem;
-   font-weight: 800;
    color: #333;
    text-decoration: none;
+}
+
+nav {
+   display: flex;
+   align-items: center;
+}
+
+nav a {
+   margin-left: 15px;
+}
+
+nav button {
+   background: #fff;
+   color: var(--primary);
+   border: 2px solid var(--primary);
+   padding: 6px 10px;
+   border-radius: 4px;
+   font-family: "Poppins";
+   cursor: "pointer";
+   font-size: 1em;
+   margin-left: 10px;
+}
+
+form.signup,
+form.login {
+   max-width: 400px;
+   margin: 40px auto;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 4px;
+}
+
+form.signup h3,
+form.login h3 {
+   margin-bottom: 15px;
 }
 
 .pages {

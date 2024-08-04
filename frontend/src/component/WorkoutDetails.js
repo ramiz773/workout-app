@@ -2,17 +2,25 @@ import React from "react";
 import moment from "moment";
 import { useWorkoutContext } from "../Hooks/useWorkoutContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import useAuthContext from "../Hooks/useAuthContext";
 
 const WorkoutDetails = ({ workout }) => {
+   const { user } = useAuthContext();
    const { dispatch } = useWorkoutContext();
    const handleDelete = async () => {
+      if (!user) {
+         return;
+      }
       const res = await fetch("/api/workouts/" + workout._id, {
          method: "DELETE",
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+         },
       });
       const json = await res.json();
       console.log(json);
       if (res.ok) {
-         console.log("inside res.ok", json);
          dispatch({ type: "DELETE_WORKOUT", payload: json });
       }
    };
